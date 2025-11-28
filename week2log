@@ -1,0 +1,9 @@
+Week 2 – Data Collection and Annotation Setup
+
+This week, I started working on the new dataset creation for road and highway vehicle detection.  
+I collected images of roads and highways that include different vehicles such as cars, trucks, buses, and motorcycles.  
+The images were taken from different angles, locations, and times of day to add variety to the dataset.  
+I created a local folder structure to store the raw images in an organized way.  
+I installed LabelImg and tested it on a few images to draw bounding boxes around the vehicles.  
+I also decided on the main classes I will use for labeling.  
+Overall, this week focused on starting the dataset and preparing a smooth annotation workflow.
