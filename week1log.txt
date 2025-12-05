@@ -1,8 +1,3 @@
-Week 1 – Planning and Setup
-
-This week, I selected my project: detecting vehicles on roads and highways using a custom dataset.  
-I chose classes like car, truck, bus, motorcycle, and bicycle.  
-I created my public GitHub repository and set up basic folders for data, results, and scripts.  
-I reviewed how YOLO annotations work and prepared to use LabelImg for labeling.  
-I installed the tools I will need and planned how to collect 1000+ images next week.  
-Week 1 mainly focused on planning and preparing the project structure.
+version https://git-lfs.github.com/spec/v1
+oid sha256:b3b6deaf57a56af2c9a1c1f616883c26d4a4db3fe8fc6dacf0119e8ac47df927
+size 542
