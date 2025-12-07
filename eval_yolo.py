@@ -3,7 +3,7 @@ from ultralytics import YOLO
 
 def main():
     # Paths
-    weights = "runs/detect/train/weights/best.pt"
+    weights = "runs/detect/train2/weights/best.pt"
     data_yaml = "data.yaml"
 
     # Load model
