@@ -13,7 +13,7 @@ This project provides a complete pipeline for preparing a custom lion–tiger da
 ```bash
 !GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Mourish-Kambhampati/CAP6415_F25_project-New-dataset-creation.git
 cd CAP6415_F25_project-New-dataset-creation
-
+```
 
 ### 2. Install Requirements
 
@@ -27,12 +27,13 @@ cd CAP6415_F25_project-New-dataset-creation
 pip install ultralytics
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install opencv-python pillow
+```
 
 #### Verify Installation
 
 ```bash
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No GPU')"
-
+```
 ### 3. Prepare Your Data
 
 Your images and labels are already organized inside:
@@ -57,6 +58,8 @@ So preprocessing will simply verify them and build the 'YOLO train/val/test' str
 
 ```bash
 python scripts/preprocessing.py
+```
+
 This will:
 
 - Extract lion.zip and tiger.zip into separate folders
@@ -75,7 +78,7 @@ Then rename images and labels:
 
 ```bash
 python scripts/rename_yolo_dataset.py
-
+```
 
 This will:
 
@@ -89,17 +92,17 @@ This will:
 
 ```bash
 python train_yolo.py
-
+```
 
 Training results and best weights will be saved in:
 
- runs/detect/train/
+ - runs/detect/train/
 
 
 #### 6. Evaluate Model Performance
-
+```bash
 python infer_yolo.py
-
+```
 
 This will evaluate the model on the validation set and save:
 
@@ -117,7 +120,9 @@ yolo_eval/exp/
 
 
 ### 7. Test the Model on New Images
+```bash
 python eval_yolo.py
+```
 
 
 This will run inference on the test set and save visualized predictions in:
