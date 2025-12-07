@@ -17,6 +17,7 @@ def rename_split(split_path_images, split_path_labels, padding=4):
             print(f"⚠ Missing label for: {img_path.name}")
             continue
 
+        # Temp names to avoid overwrite issues
         temp_img = img_dir / f"tmp_{idx}{img_path.suffix}"
         temp_lbl = lbl_dir / f"tmp_{idx}.txt"
 
@@ -30,7 +31,7 @@ def rename_split(split_path_images, split_path_labels, padding=4):
 
 
 def main():
-    base = "dataset"
+    base = "dataset"   # already inside project folder after cd
 
     for split in ["train", "val", "test"]:
         img_dir = f"{base}/{split}/images"
