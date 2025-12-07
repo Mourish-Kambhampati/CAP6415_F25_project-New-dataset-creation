@@ -4,23 +4,24 @@ from ultralytics import YOLO
 def main():
     # Paths
     weights = "runs/detect/train/weights/best.pt"
-    source = "dataset/test/images"
+    data_yaml = "data.yaml"
 
     # Load model
     model = YOLO(weights)
 
-    # Run inference
-    model.predict(
-        source=source,
+    # Evaluate on validation set
+    model.val(
+        data=data_yaml,
+        split="val",
         save=True,
         imgsz=640,
-        device='cuda',  # or 'cpu'
-        project="yolo_infer",
+        device="cuda",  # or "cpu"
+        project="yolo_eval",
         name="exp",
         exist_ok=True
     )
 
-    print("Inference complete. Results saved in yolo_infer/exp")
+    print("Evaluation complete. Results saved in yolo_eval/exp")
 
 if __name__ == "__main__":
     main()
