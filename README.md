@@ -43,7 +43,8 @@ dataset_labels/
 So preprocessing will simply verify them and build the YOLO train/val/test structure.
 
 #### 4. Run Dataset Preparation
-##### python preprocessing.py
+
+python scripts/preprocessing.py
 
 
 This will:
@@ -62,7 +63,7 @@ dataset/{train,val,test}/labels
 
 Then rename images and labels:
 
-python rename_yolo_dataset.py
+python scripts/rename_yolo_dataset.py
 
 
 This will:
