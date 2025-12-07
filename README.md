@@ -134,6 +134,8 @@ yolo_infer/exp/
 
 
 ### Project Structure
+
+<pre>
 CAP6415_F25_project-New-dataset-creation/
 │
 ├── dataset_images/          # Raw lion and tiger images
@@ -154,3 +156,4 @@ CAP6415_F25_project-New-dataset-creation/
 ├── yolo_infer/              # Inference outputs (predicted images)
 │
 └── data.yaml                # YOLO configuration file (auto-generated)
+<pre>
