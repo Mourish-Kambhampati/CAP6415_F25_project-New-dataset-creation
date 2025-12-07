@@ -1,7 +1,7 @@
 # CAP6415_F25_project-New-dataset-creation
 This project provides a complete pipeline for preparing a custom lion–tiger dataset and training a YOLOv8 object detector.
 
-### Features
+## Features
 - Rename and organize images and labels
 - Convert raw images and YOLO labels into a unified dataset structure
 - Split dataset into train/val/test (70/15/15)
@@ -9,60 +9,71 @@ This project provides a complete pipeline for preparing a custom lion–tiger da
 - Evaluate and visualize detection results
 
 ## Getting Started
-#### 1. Clone the Repository
-!git clone https://github.com/Mourish-Kambhampati/CAP6415_F25_project-New-dataset-creation.git
+### 1. Clone the Repository
+```bash
+!GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Mourish-Kambhampati/CAP6415_F25_project-New-dataset-creation.git
 cd CAP6415_F25_project-New-dataset-creation
 
-#### 2. Install Requirements
 
-##### Prerequisites
+### 2. Install Requirements
+
+#### Prerequisites
 - Python 3.8+
 - Optional: NVIDIA GPU with updated drivers (for faster YOLOv8 training)
 
 ##### Using pip
 
-- pip install ultralytics
-- pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-- pip install opencv-python pillow
+```bash
+pip install ultralytics
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install opencv-python pillow
 
-##### Verify Installation
+#### Verify Installation
+
+```bash
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No GPU')"
 
-#### 3. Prepare Your Data
+### 3. Prepare Your Data
 
 Your images and labels are already organized inside:
 
+## Dataset Structure
 dataset_images/
-    lion/images/
-    tiger/images/
+├── lion/
+│ └── images/
+└── tiger/
+└── images/
 
 dataset_labels/
-    lion/labels/
-    tiger/labels/
+├── lion/
+│ └── labels/
+└── tiger/
+└── labels/
 
-So preprocessing will simply verify them and build the YOLO train/val/test structure.
+So preprocessing will simply verify them and build the 'YOLO train/val/test' structure.
 
-#### 4. Run Dataset Preparation
 
+### 4. Run Dataset Preparation
+
+```bash
 python scripts/preprocessing.py
-
-
 This will:
 
-- Verify existing YOLO labels
+- Extract lion.zip and tiger.zip into separate folders
+
+- Automatically fix tiger labels (convert class ID 0 → 1)
+
+- Combine both lion (class 0) and tiger (class 1) datasets
+
+- Verify that image–label pairs exist
 
 - Split the dataset into train / val / test (70/15/15)
 
-- Create folders:
-
-dataset/{train,val,test}/images
-dataset/{train,val,test}/labels
-
-
-- Generate data.yaml
 
 Then rename images and labels:
 
+
+```bash
 python scripts/rename_yolo_dataset.py
 
 
@@ -73,7 +84,10 @@ This will:
 - Keep YOLO structure intact
 
 
-#### 5. Train YOLOv8
+### 5. Train YOLOv8
+
+
+```bash
 python train_yolo.py
 
 
@@ -102,7 +116,7 @@ Results stored in:
 yolo_eval/exp/
 
 
-#### 7. Test the Model on New Images
+### 7. Test the Model on New Images
 python eval_yolo.py
 
 
