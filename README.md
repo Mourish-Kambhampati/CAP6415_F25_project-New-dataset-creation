@@ -39,17 +39,20 @@ python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA avail
 Your images and labels are already organized inside:
 
 ## Dataset Structure
+
+<pre>
 dataset_images/
 ├── lion/
-│ └── images/
+│   └── images/
 └── tiger/
-└── images/
+    └── images/
 
 dataset_labels/
 ├── lion/
-│ └── labels/
+│   └── labels/
 └── tiger/
-└── labels/
+    └── labels/
+</pre>
 
 So preprocessing will simply verify them and build the 'YOLO train/val/test' structure.
 
