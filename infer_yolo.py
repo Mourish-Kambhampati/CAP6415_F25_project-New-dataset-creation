@@ -2,25 +2,26 @@ import os
 from ultralytics import YOLO
 
 def main():
-    # default YOLO training output path
-    weights = os.path.join('runs', 'train', 'exp', 'weights', 'best.pt')
-    
-    # folder with test images
-    source = os.path.join('data', 'images', 'test')
+    # Paths
+    weights = "runs/detect/train/weights/best.pt"
+    data_yaml = "data.yaml"
 
+    # Load model
     model = YOLO(weights)
 
-    results = model.predict(
-        source=source,
+    # Evaluate on validation set
+    model.val(
+        data=data_yaml,
+        split="val",
         save=True,
         imgsz=640,
-        device='cuda',
-        project='runs', 
-        name='infer',
+        device="cuda",  # or "cpu"
+        project="yolo_eval",
+        name="exp",
         exist_ok=True
     )
 
-    print("Inference complete. Results saved in runs/infer")
+    print("Evaluation complete. Results saved in yolo_eval/exp")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
