@@ -2,14 +2,14 @@ from ultralytics import YOLO
 
 def main():
     DATASET = "data.yaml"
-    MODEL_WEIGHTS = "yolo11m.pt"
+    MODEL_WEIGHTS = "yolov8n.pt"
 
     model = YOLO(MODEL_WEIGHTS)
 
     results = model.train(
         data=DATASET,
         imgsz=640,
-        epochs=100,
+        epochs=50,
         batch=16,
         workers=8,
 
