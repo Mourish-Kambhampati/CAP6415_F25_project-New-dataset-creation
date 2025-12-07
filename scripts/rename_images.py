@@ -1,49 +1,44 @@
+import os
 from pathlib import Path
-from uuid import uuid4
+
+def rename_split(split_path_images, split_path_labels, padding=4):
+    img_dir = Path(split_path_images)
+    lbl_dir = Path(split_path_labels)
+
+    images = sorted([p for p in img_dir.iterdir() if p.is_file()])
+    print(f"Found {len(images)} images in {img_dir}")
+
+    for idx, img_path in enumerate(images):
+        new_name = f"{idx:0{padding}d}{img_path.suffix.lower()}"
+        new_label_name = f"{idx:0{padding}d}.txt"
+
+        lbl_path = lbl_dir / (img_path.stem + ".txt")
+        if not lbl_path.exists():
+            print(f"⚠ Missing label for: {img_path.name}")
+            continue
+
+        # Temp names to avoid overwrite issues
+        temp_img = img_dir / f"tmp_{idx}{img_path.suffix}"
+        temp_lbl = lbl_dir / f"tmp_{idx}.txt"
+
+        img_path.rename(temp_img)
+        lbl_path.rename(temp_lbl)
+
+        temp_img.rename(img_dir / new_name)
+        temp_lbl.rename(lbl_dir / new_label_name)
+
+    print(f"✅ Renamed {len(images)} files in {img_dir}")
+
 
 def main():
-    # Your folder to rename
-    FOLDER = Path("dataset_images/lion")    # change this
-    START = 0
-    PADDING = 4
-    EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp"}
+    base = "dataset"   # already inside project folder after cd
 
-    # Collect files
-    files = [p for p in FOLDER.iterdir() if p.suffix.lower() in EXTS]
-    files.sort(key=lambda p: p.name.lower())
+    for split in ["train", "val", "test"]:
+        img_dir = f"{base}/{split}/images"
+        lbl_dir = f"{base}/{split}/labels"
+        rename_split(img_dir, lbl_dir, padding=4)
 
-    if not files:
-        print("No image files found.")
-        return
-
-    # Check capacity
-    total_needed = START + len(files) - 1
-    max_allowed = 10**PADDING - 1
-    if total_needed > max_allowed:
-        print("ERROR: Not enough padding for renaming.")
-        return
-
-    # Build mapping
-    mapping = {}
-    for idx, p in enumerate(files, start=START):
-        new_name = f"{idx:0{PADDING}d}{p.suffix.lower()}"
-        mapping[p] = FOLDER / new_name
-
-    # Temp rename to avoid collisions
-    uid = uuid4().hex[:8]
-    temp_map = {}
-
-    # Step 1 — rename everything to temp names
-    for i, (old, final) in enumerate(mapping.items()):
-        tmp = FOLDER / f".tmp_{uid}_{i}{old.suffix.lower()}"
-        old.rename(tmp)
-        temp_map[tmp] = final
-
-    # Step 2 — rename temps to final names
-    for tmp, final in temp_map.items():
-        tmp.rename(final)
-
-    print(f"Renamed {len(files)} files in {FOLDER} successfully.")
+    print("\n🎉 All dataset splits renamed successfully!")
 
 
 if __name__ == "__main__":
