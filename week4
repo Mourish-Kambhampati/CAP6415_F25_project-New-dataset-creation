@@ -1,0 +1,5 @@
+This week, I completed the remaining annotations and finalized the full labeled dataset.
+I converted the annotations into YOLO format and verified that each image had a matching label file.
+Next, I split the dataset into training, validation, and testing sets to prepare for model training.
+I also performed basic preprocessing steps such as resizing images and checking for duplicate or corrupted files.
+By the end of the week, the dataset was fully cleaned, structured, and ready to be used for training the detection model.
