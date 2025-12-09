@@ -1,0 +1,6 @@
+This week, I focused on understanding the project requirements and defining the overall workflow for building the vehicle detection system.
+I researched different object detection models and decided to use YOLO because of its speed and accuracy.
+I also explored various datasets and identified the types of images I would need for training.
+To stay organized, I planned the folder structure for storing raw images, annotations, and processed data.
+Additionally, I reviewed tools like LabelImg and Roboflow to determine which one would fit best for the annotation work.
+Overall, this week was about planning, exploring model options, and preparing the resources needed for the upcoming stages.
