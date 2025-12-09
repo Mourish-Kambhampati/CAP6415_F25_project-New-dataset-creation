@@ -1,0 +1,5 @@
+This week, I continued annotating the images using LabelImg, focusing on maintaining consistent bounding boxes across all classes.
+I reviewed the labeled files and corrected a few mistakes in class assignments to ensure accuracy.
+Some images were low-quality or unclear, so I removed them from the dataset to avoid bad training samples.
+I also organized the annotated files into a clean structure for easier processing.
+By the end of the week, a large portion of the dataset was labeled, and the quality of the annotations had significantly improved.
